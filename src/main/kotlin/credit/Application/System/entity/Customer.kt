@@ -1,4 +1,4 @@
-package Credit.Application.System.entity
+package credit.Application.System.entity
 
 import jakarta.persistence.*
 

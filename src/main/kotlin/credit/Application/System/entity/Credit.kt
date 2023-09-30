@@ -1,14 +1,14 @@
-package Credit.Application.System.entity
+package credit.Application.System.entity
 
 
-import Credit.Application.System.enummeration.Status
+import credit.Application.System.enummeration.Status
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.UUID
 
 @Entity
-@Table(name = "Credit")
+//@Table(name = "Credit")
 data class Credit(
     @Column(nullable = false, unique = true) val creditCode: UUID = UUID.randomUUID(),
     @Column(nullable = false) val creditValue: BigDecimal = BigDecimal.ZERO,

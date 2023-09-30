@@ -1,4 +1,4 @@
-package Credit.Application.System
+package credit.Application.System
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
