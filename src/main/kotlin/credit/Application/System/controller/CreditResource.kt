@@ -1,10 +1,13 @@
-package credit.application.system.controller
+package credit.Application.System.controller
 
 import credit.Application.System.entity.Credit
 import credit.Application.System.service.impl.CreditService
 import credit.application.system.dto.CreditDto
 import credit.application.system.dto.CreditView
 import credit.application.system.dto.CreditViewList
+import org.springframework.http.HttpStatus
+import org.springframework.http.HttpStatusCode
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.UUID
 import java.util.stream.Collectors
@@ -15,24 +18,25 @@ class CreditResource(
     private val creditService: CreditService
 ) {
     @PostMapping
-    fun saveCredit(@RequestBody creditDto: CreditDto): String {
+    fun saveCredit(@RequestBody creditDto: CreditDto): ResponseEntity<String> {
         val savedCredit: Credit = this.creditService.save(creditDto.toEntity())
-        return "Credit ${savedCredit.creditCode} - Customer ${savedCredit.customer?.firstName} saved!"
+        return ResponseEntity.status(HttpStatus.CREATED).body("Credit ${savedCredit.creditCode} - Customer ${savedCredit.customer?.firstName} saved!")
     }
 
     @GetMapping
-    fun findAllByCustomerId(@RequestParam(value = "customerId") customerId: Long): List<CreditViewList> {
-        return this.creditService.findAllByCustomer(customerId).stream()
+    fun findAllByCustomerId(@RequestParam(value = "customerId") customerId: Long): ResponseEntity<List<CreditViewList>> {
+        val creditViewList: List<CreditViewList> = this.creditService.findAllByCustomer(customerId).stream()
             .map { credit: Credit -> CreditViewList(credit) }
             .collect(Collectors.toList())
+        return ResponseEntity.status(HttpStatus.OK).body(creditViewList)
     }
 
-    @GetMapping
+    @GetMapping("/{creditCode}")
     fun findByCreditCode(
         @RequestParam(value = "customerId") customerId: Long,
         @PathVariable creditCode: UUID
-    ): CreditView {
+    ): ResponseEntity<CreditView> {
         val credit: Credit = this.creditService.findByCreditCode(customerId, creditCode)
-        return CreditView(credit)
+        return ResponseEntity.status(HttpStatus.OK).body(CreditView(credit))
     }
 }
