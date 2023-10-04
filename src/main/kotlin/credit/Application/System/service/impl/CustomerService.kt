@@ -1,8 +1,8 @@
-package credit.Application.System.service.impl
+package credit.application.system.service.impl
 
-import credit.Application.System.entity.Customer
-import credit.Application.System.repository.CustomerRepository
-import credit.Application.System.service.ICustomerService
+import credit.application.system.entity.Customer
+import credit.application.system.repository.CustomerRepository
+import credit.application.system.service.ICustomerService
 import org.springframework.stereotype.Service
 import java.lang.RuntimeException
 
