@@ -1,6 +1,6 @@
-package credit.Application.System.service
+package credit.application.system.service
 
-import credit.Application.System.entity.Credit
+import credit.application.system.entity.Credit
 import java.util.*
 
 interface ICreditService {

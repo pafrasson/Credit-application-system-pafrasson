@@ -1,4 +1,4 @@
-package credit.Application.System.entity
+package credit.application.system.entity
 
 import jakarta.persistence.*
 import java.math.BigDecimal

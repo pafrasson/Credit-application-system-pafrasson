@@ -1,7 +1,7 @@
-package credit.Application.System.controller
+package credit.application.system.controller
 
-import credit.Application.System.entity.Customer
-import credit.Application.System.service.impl.CustomerService
+import credit.application.system.entity.Customer
+import credit.application.system.service.impl.CustomerService
 import credit.application.system.dto.CustomerDto
 import credit.application.system.dto.CustomerUpdateDto
 import credit.application.system.dto.CustomerView

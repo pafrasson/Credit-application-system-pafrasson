@@ -1,7 +1,7 @@
 package credit.application.system.dto
 
-import credit.Application.System.entity.Address
-import credit.Application.System.entity.Customer
+import credit.application.system.entity.Address
+import credit.application.system.entity.Customer
 import java.math.BigDecimal
 
 data class CustomerDto(

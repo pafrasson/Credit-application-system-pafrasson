@@ -1,7 +1,7 @@
 package credit.application.system.dto
 
-import credit.Application.System.entity.Credit
-import credit.Application.System.enummeration.Status
+import credit.application.system.entity.Credit
+import credit.application.system.enummeration.Status
 import java.math.BigDecimal
 import java.util.*
 

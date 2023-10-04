@@ -1,4 +1,4 @@
-package credit.Application.System
+package credit.application.system
 
 import lombok.NoArgsConstructor
 import org.springframework.boot.autoconfigure.SpringBootApplication

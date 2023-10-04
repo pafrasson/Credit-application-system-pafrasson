@@ -1,12 +1,11 @@
-package credit.Application.System.controller
+package credit.application.system.controller
 
-import credit.Application.System.entity.Credit
-import credit.Application.System.service.impl.CreditService
+import credit.application.system.entity.Credit
+import credit.application.system.service.impl.CreditService
 import credit.application.system.dto.CreditDto
 import credit.application.system.dto.CreditView
 import credit.application.system.dto.CreditViewList
 import org.springframework.http.HttpStatus
-import org.springframework.http.HttpStatusCode
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.util.UUID

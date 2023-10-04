@@ -1,6 +1,6 @@
-package credit.Application.System.repository
+package credit.application.system.repository
 
-import credit.Application.System.entity.Customer
+import credit.application.system.entity.Customer
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

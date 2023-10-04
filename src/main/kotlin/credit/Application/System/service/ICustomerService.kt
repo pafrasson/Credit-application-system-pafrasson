@@ -1,6 +1,6 @@
-package credit.Application.System.service
+package credit.application.system.service
 
-import credit.Application.System.entity.Customer
+import credit.application.system.entity.Customer
 
 interface ICustomerService {
     fun save(customer: Customer) :Customer
