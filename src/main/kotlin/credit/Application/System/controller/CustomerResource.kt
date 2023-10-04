@@ -1,10 +1,12 @@
-package credit.application.system.controller
+package credit.Application.System.controller
 
 import credit.Application.System.entity.Customer
 import credit.Application.System.service.impl.CustomerService
 import credit.application.system.dto.CustomerDto
 import credit.application.system.dto.CustomerUpdateDto
 import credit.application.system.dto.CustomerView
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -13,15 +15,15 @@ class CustomerResource(
     private val customerService: CustomerService
 ) {
     @PostMapping
-    fun saveCustomer(@RequestBody customerDto: CustomerDto): String {
+    fun saveCustomer(@RequestBody customerDto: CustomerDto): ResponseEntity<String> {
         val savedCustomer = this.customerService.save(customerDto.toEntity())
-        return "Customer ${savedCustomer.email} saved!"
+        return ResponseEntity.status(HttpStatus.CREATED).body("Customer ${savedCustomer.email} saved!")
     }
 
     @GetMapping("/{id}")
-    fun finById(@PathVariable id: Long): CustomerView {
+    fun finById(@PathVariable id: Long): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
-        return CustomerView(customer)
+        return ResponseEntity.status(HttpStatus.OK).body(CustomerView(customer))
     }
 
     @DeleteMapping("/{id}")
@@ -31,11 +33,11 @@ class CustomerResource(
     fun updateCustomer(
         @RequestParam(value = "customerId") id: Long,
         @RequestBody customerUptadeDto: CustomerUpdateDto
-    ): CustomerView {
+    ): ResponseEntity<CustomerView> {
         val customer: Customer = this.customerService.findById(id)
         val customerToUpdate: Customer = customerUptadeDto.toEntity(customer)
         val customerUpdated: Customer = this.customerService.save(customerToUpdate)
 
-        return CustomerView(customerUpdated)
+        return ResponseEntity.status(HttpStatus.CREATED).body(CustomerView(customerUpdated))
     }
 }
