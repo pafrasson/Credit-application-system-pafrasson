@@ -1,5 +1,6 @@
 package credit.application.system.exception
 
+import org.springframework.dao.DataAccessException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.FieldError
@@ -28,6 +29,20 @@ class RestExceptionHandler {
                 exception = ex.javaClass.toString(),
                 details = errors
             ), HttpStatus.BAD_REQUEST
+        )
+    }
+
+    @ExceptionHandler(DataAccessException::class)
+    fun handlerValidException(ex: DataAccessException): ResponseEntity<ExceptionDetails> {
+
+        return ResponseEntity(
+            ExceptionDetails(
+                title = "Bad Request! Something is wrong",
+                timestamp = LocalDateTime.now(),
+                status = HttpStatus.CONFLICT.value(),
+                exception = ex.javaClass.toString(),
+                details = mutableMapOf(ex.cause.toString() to ex.message)
+            ), HttpStatus.CONFLICT
         )
     }
 }
