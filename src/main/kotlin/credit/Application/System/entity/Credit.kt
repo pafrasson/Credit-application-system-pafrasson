@@ -8,7 +8,6 @@ import java.time.LocalDate
 import java.util.UUID
 
 @Entity
-//@Table(name = "Credit")
 data class Credit(
     @Column(nullable = false, unique = true) val creditCode: UUID = UUID.randomUUID(),
     @Column(nullable = false) var creditValue: BigDecimal = BigDecimal.ZERO,
